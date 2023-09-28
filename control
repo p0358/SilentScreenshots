@@ -1,0 +1,9 @@
+Package: net.p0358.silentscreenshots
+Name: SilentScreenshots
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: No shutter sound when you take screenshot, because it's very awkward
+Maintainer: p0358
+Author: p0358
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
