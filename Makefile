@@ -4,8 +4,6 @@ ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
 else
 	ARCHS = armv7 armv7s arm64 arm64e
 	TARGET = iphone:clang:15.5:7.0
-	arm64e_CFLAGS = -fno-ptrauth-abi-version
-	arm64e_LDFLAGS = -ld_classic
 endif
 
 INSTALL_TARGET_PROCESSES = SpringBoard
