@@ -66,7 +66,7 @@ jobs:
         with:
           repository: xybp888/iOS-SDKs
           ref: master
-          sparse-checkout: iPhoneOS14.5.sdk
+          sparse-checkout: iPhoneOS14.2.sdk
           path: theos/sdks
 
       - name: Install dependencies
