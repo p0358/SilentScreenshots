@@ -10,9 +10,9 @@ jobs:
   build:
     runs-on: macos-13
     steps:
-        - uses: maxim-lobanov/setup-xcode@v1
-          with:
-            xcode-version: latest
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
             
       - uses: actions/checkout@main
 
@@ -35,13 +35,20 @@ jobs:
       - name: Install dependencies
         run: brew install make xz ldid
 
-      - name: Build rootful package
+      - name: Build package (rootless)
         run: THEOS=theos gmake clean package FINALPACKAGE=1
 
-      - name: Build rootless package
+      - name: Build package (rootless)
         run: THEOS=theos gmake clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
-      - name: Upload a Build Artifact
+      - name: Upload a Build Artifact (rootful)
         uses: actions/upload-artifact@v3
         with:
-          path: packages/*.deb
+          name: packages iphoneos-arm (rootful)
+          path: packages/*_iphoneos-arm.deb
+
+      - name: Upload a Build Artifact (rootless)
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages iphoneos-arm64 (rootless)
+          path: packages/*_iphoneos-arm64.deb
