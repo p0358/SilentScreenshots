@@ -29,7 +29,9 @@ jobs:
           path: theos/sdks
 
       - name: Install dependencies
-        run: brew install make xz ldid
+        run: |
+          sudo xcode-select -switch /Applications/Xcode-15.0.app/Contents/Developer
+          brew install make xz ldid
 
       - name: Build rootful package
         run: THEOS=theos gmake clean package FINALPACKAGE=1
