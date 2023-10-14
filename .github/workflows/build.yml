@@ -29,14 +29,13 @@ jobs:
           path: theos/sdks
 
       - name: Install dependencies
-        run: |
-          brew install make xz ldid
-          export THEOS=theos
+        run: brew install make xz ldid
 
-      - name: Build package
-        run: |
-          gmake clean package FINALPACKAGE=1
-          gmake clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+      - name: Build rootful package
+        run: THEOS=theos gmake clean package FINALPACKAGE=1
+
+      - name: Build rootless package
+        run: THEOS=theos gmake clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
