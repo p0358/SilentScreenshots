@@ -10,6 +10,10 @@ jobs:
   build:
     runs-on: macos-13
     steps:
+        - uses: maxim-lobanov/setup-xcode@v1
+          with:
+            xcode-version: latest
+            
       - uses: actions/checkout@main
 
       - name: Checkout theos/theos
@@ -29,9 +33,7 @@ jobs:
           path: theos/sdks
 
       - name: Install dependencies
-        run: |
-          sudo xcode-select -switch /Applications/Xcode-15.0.app/Contents/Developer
-          brew install make xz ldid
+        run: brew install make xz ldid
 
       - name: Build rootful package
         run: THEOS=theos gmake clean package FINALPACKAGE=1
